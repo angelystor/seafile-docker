@@ -82,7 +82,7 @@ RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     rm -f seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz 
     
 # For using TLS connection to LDAP/AD server with docker-ce.
-RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libldap_r*" -o -name "libsasl2.so*" \) -delete
+# RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libldap_r*" -o -name "libsasl2.so*" \) -delete
 
 
 EXPOSE 80
