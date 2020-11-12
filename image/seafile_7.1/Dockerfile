@@ -84,7 +84,9 @@ RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     tar -zxvf seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz && \
     rm -f seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz  && \
     chown -R pi.pi /opt/seafile && \
-    chown -R pi.pi /etc/container_environment
+    chown -R pi.pi /etc/container_environment \
+    chown -R pi.pi /bootstrap && \
+    chown -R pi.pi /scripts
     
 # For using TLS connection to LDAP/AD server with docker-ce.
 # RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libldap_r*" -o -name "libsasl2.so*" \) -delete
