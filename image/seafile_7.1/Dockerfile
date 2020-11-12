@@ -4,7 +4,7 @@ FROM phusion/baseimage:master-arm
 RUN apt-get update --fix-missing
 
 # Utility tools
-RUN apt-get install -y vim htop net-tools psmisc wget curl git ccnet
+RUN apt-get install -y vim htop net-tools psmisc wget curl git
 
 # For suport set local time zone.
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install tzdata -y
