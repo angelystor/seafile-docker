@@ -1,5 +1,5 @@
 # See https://hub.docker.com/r/phusion/baseimage/tags/
-FROM phusion/baseimage:master-arm
+FROM phusion/baseimage:master-arm64
 
 RUN apt-get update --fix-missing
 
