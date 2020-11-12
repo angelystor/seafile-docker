@@ -22,9 +22,9 @@ RUN apt-get install -y \
     libmemcached-dev \
     python3-setuptools
 
-RUN python3.6 -m pip install --user --upgrade pip setuptools wheel  && rm -r /root/.cache/pip
+RUN python3 -m pip install --user --upgrade pip setuptools wheel  && rm -r /root/.cache/pip
 
-RUN python3.6 -m pip install --timeout=3600 \
+RUN python3 -m pip install --timeout=3600 \
     click \
     termcolor \
     colorlog \ 
