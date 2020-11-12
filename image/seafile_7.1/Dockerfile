@@ -84,7 +84,7 @@ RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     tar -zxvf seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz && \
     rm -f seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz  && \
     chown -R pi.pi /opt/seafile && \
-    chown -R pi.pi /etc/container_environment \
+    chown -R pi.pi /etc/container_environment && \
     chown -R pi.pi /bootstrap && \
     chown -R pi.pi /scripts
     
