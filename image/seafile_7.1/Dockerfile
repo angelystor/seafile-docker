@@ -92,6 +92,5 @@ RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
 
 EXPOSE 80 8000 8082 8999
 
-USER pi
 #CMD ["/sbin/my_init", "--", "/scripts/start.py"]
 CMD ["/sbin/my_init", "--", "setuser", "pi", "/scripts/start.py"]
