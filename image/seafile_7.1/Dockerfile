@@ -5,7 +5,7 @@ FROM phusion/baseimage:master-arm64
 RUN apt-get update --fix-missing
 
 # Utility tools
-RUN apt-get install -y nano htop net-tools psmisc wget curl git libevent-dev libevent
+RUN apt-get install -y nano htop net-tools psmisc wget curl git libevent-dev
 
 # For suport set local time zone.
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install tzdata -y
