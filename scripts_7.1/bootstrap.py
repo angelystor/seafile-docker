@@ -143,7 +143,7 @@ def init_seafile_server():
         .format(get_script('setup-seafile-mysql.py')))
 
     setup_script = get_script('setup-seafile-mysql.sh')
-    call('{} auto -n seafile'.format(setup_script), env=env)
+    call('{} auto -e 0 -n seafile'.format(setup_script), env=env)
 
     domain = get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com')
     proto = 'https' if is_https() else 'http'
