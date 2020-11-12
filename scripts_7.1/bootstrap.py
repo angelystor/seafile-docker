@@ -118,7 +118,7 @@ def init_seafile_server():
         loginfo('Skip running setup-seafile-mysql.py because there is existing seafile-data folder.')
         return
 
-    loginfo('Now running setup-seafile-mysql.py in auto mode.')
+    loginfo('zzzNow running setup-seafile-mysql.py in auto mode.')
     env = {
         'SERVER_NAME': 'seafile',
         'SERVER_IP': get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com'),
@@ -129,6 +129,7 @@ def init_seafile_server():
         # Default MariaDB root user has empty password and can only connect from localhost.
         'MYSQL_ROOT_PASSWD': get_conf('DB_ROOT_PASSWD', ''),
     }
+    print(env)
 
     # Change the script to allow mysql root password to be empty
     # call('''sed -i -e 's/if not mysql_root_passwd/if not mysql_root_passwd and "MYSQL_ROOT_PASSWD" not in os.environ/g' {}'''
