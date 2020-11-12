@@ -118,12 +118,13 @@ def init_seafile_server():
         loginfo('Skip running setup-seafile-mysql.py because there is existing seafile-data folder.')
         return
 
-    loginfo('zzzNow running setup-seafile-mysql.py in auto mode.')
+    loginfo('Now running setup-seafile-mysql.py in auto mode.')
     env = {
         'SERVER_NAME': 'seafile',
         'SERVER_IP': get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com'),
         'MYSQL_USER': 'seafile',
-        'MYSQL_USER_PASSWD': str(uuid.uuid4()),
+        #'MYSQL_USER_PASSWD': str(uuid.uuid4()),
+        'MYSQL_USER_PASSWD': get_conf('MYSQL_USER_PASSWORD', str(uuid.uuid4())),
         'MYSQL_USER_HOST': '%.%.%.%',
         'MYSQL_HOST': get_conf('DB_HOST','127.0.0.1'),
         # Default MariaDB root user has empty password and can only connect from localhost.
@@ -143,7 +144,7 @@ def init_seafile_server():
         .format(get_script('setup-seafile-mysql.py')))
 
     setup_script = get_script('setup-seafile-mysql.sh')
-    call('{} auto -e 0 -n seafile'.format(setup_script), env=env)
+    call('{} auto -n seafile'.format(setup_script), env=env)
 
     domain = get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com')
     proto = 'https' if is_https() else 'http'
