@@ -77,7 +77,7 @@ WORKDIR /opt/seafile
 
 ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
-RUN adduser -D pi
+RUN adduser --no-create-home pi
 
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-focal-arm64.tar.gz && \
