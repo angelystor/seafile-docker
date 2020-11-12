@@ -2,10 +2,11 @@
 FROM phusion/baseimage:master-arm64
 #FROM arm64v8/ubuntu:latest
 
+
 RUN apt-get update --fix-missing
 
 # Utility tools
-RUN apt-get install -y nano htop net-tools psmisc wget curl git libevent-dev
+RUN apt-get install -y nano htop net-tools psmisc wget curl git libevent-dev sudo
 
 # For suport set local time zone.
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install tzdata -y
@@ -76,10 +77,13 @@ WORKDIR /opt/seafile
 
 ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
+RUN adduser -D pi
+
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-focal-arm64.tar.gz && \
     tar -zxvf seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz && \
-    rm -f seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz 
+    rm -f seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz  \
+    chown -R pi.pi /opt/seafile
     
 # For using TLS connection to LDAP/AD server with docker-ce.
 # RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libldap_r*" -o -name "libsasl2.so*" \) -delete
@@ -87,5 +91,6 @@ RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
 
 EXPOSE 80 8000 8082 8999
 
-
+USER pi
+#CMD ["/sbin/my_init", "--", "/scripts/start.py"]
 CMD ["/sbin/my_init", "--", "/scripts/start.py"]
