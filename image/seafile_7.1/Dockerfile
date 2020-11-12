@@ -1,4 +1,3 @@
-# Lastet phusion baseimage as of 20180412, based on ubuntu 18.04
 # See https://hub.docker.com/r/phusion/baseimage/tags/
 FROM phusion/baseimage:master-arm
 
@@ -59,6 +58,7 @@ RUN python3.6 -m pip install --timeout=3600 \
 COPY scripts_7.1 /scripts
 COPY templates /templates
 COPY services /services
+RUN chmod u+x /scripts/*
 
 RUN mkdir -p /etc/my_init.d && \
     rm -f /etc/my_init.d/* && \
@@ -73,12 +73,12 @@ RUN mkdir -p /etc/service/nginx && \
 # Seafile
 WORKDIR /opt/seafile
 
-ENV SEAFILE_VERSION=7.1.4 SEAFILE_SERVER=seafile-server
+ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
-    wget https://github.com/haiwen/seafile-rpi/releases/download/v7.1.4/seafile-server_7.1.4_pi-bionic-stable.tar.gz && \
-    tar -zxvf seafile-server_${SEAFILE_VERSION}_pi-bionic-stable.tar.gz && \
-    rm -f seafile-server_${SEAFILE_VERSION}_pi-bionic-stable.tar.gz 
+    wget https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-bionic-arm64.tar.gz && \
+    tar -zxvf seafile-server_${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz && \
+    rm -f seafile-server_${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz 
     
 
 # For using TLS connection to LDAP/AD server with docker-ce.
