@@ -75,10 +75,10 @@ WORKDIR /opt/seafile
 
 ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
-RUN mkdir -p /opt/seafile/ && cd /opt/seafile \
-    mkdir scratch && cd scratch \
-    wget https://raw.githubusercontent.com/haiwen/seafile-rpi/master/build3.sh \
-    chmod u+x build3.sh \
+RUN mkdir -p /opt/seafile/ && cd /opt/seafile && \
+    mkdir scratch && cd scratch && \
+    wget https://raw.githubusercontent.com/haiwen/seafile-rpi/master/build3.sh && \
+    chmod u+x build3.sh && \
     ./build3.sh ${SEAFILE_VERSION}
 
 
