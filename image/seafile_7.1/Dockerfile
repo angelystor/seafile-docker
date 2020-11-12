@@ -29,12 +29,12 @@ RUN python3 -m pip install --timeout=3600 \
     termcolor \
     colorlog \ 
     pymysql \
-    django==1.11.29 \
+    django \
     future \
     captcha \
     jinja2 \ 
     django-statici18n \
-    django-post_office==3.3.0 \
+    django-post_office \
     django-webpack_loader \
     gunicorn \
     pymysql \
@@ -76,7 +76,7 @@ WORKDIR /opt/seafile
 ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
-    wget https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-bionic-arm64.tar.gz && \
+    wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-bionic-arm64.tar.gz && \
     tar -zxvf seafile-server_${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz && \
     rm -f seafile-server_${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz 
     
