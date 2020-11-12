@@ -75,6 +75,13 @@ WORKDIR /opt/seafile
 
 ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
+RUN mkdir -p /opt/seafile/ && cd /opt/seafile \
+    mkdir scratch && cd scratch \
+    wget https://raw.githubusercontent.com/haiwen/seafile-rpi/master/build3.sh \
+    chmod u+x build3.sh \
+    ./build3.sh ${SEAFILE_VERSION}
+
+
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-focal-arm64.tar.gz && \
     tar -zxvf seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz && \
@@ -87,4 +94,4 @@ RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libld
 EXPOSE 80
 
 
-CMD ["/sbin/my_init", "--", "/scripts/start.py"]
+#CMD ["/sbin/my_init", "--", "/scripts/start.py"]
