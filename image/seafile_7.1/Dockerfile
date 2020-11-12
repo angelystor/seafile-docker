@@ -4,7 +4,7 @@ FROM phusion/baseimage:master-arm
 RUN apt-get update --fix-missing
 
 # Utility tools
-RUN apt-get install -y nano htop net-tools psmisc wget curl git sudo
+RUN apt-get install -y nano htop net-tools psmisc wget curl git
 
 # For suport set local time zone.
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install tzdata -y
@@ -74,13 +74,6 @@ RUN mkdir -p /etc/service/nginx && \
 WORKDIR /opt/seafile
 
 ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
-
-RUN mkdir -p /opt/seafile/ && cd /opt/seafile && \
-    mkdir scratch && cd scratch && \
-    wget --no-check-certificate https://raw.githubusercontent.com/haiwen/seafile-rpi/master/build3.sh && \
-    chmod u+x build3.sh && \
-    ./build3.sh ${SEAFILE_VERSION}
-
 
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-focal-arm64.tar.gz && \
