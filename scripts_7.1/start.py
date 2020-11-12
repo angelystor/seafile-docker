@@ -52,7 +52,6 @@ def main():
     generate_local_nginx_conf()
     call('nginx -s reload')
 
-    time.sleep(5)
     wait_for_mysql()
     init_seafile_server()
 
