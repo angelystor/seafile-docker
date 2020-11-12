@@ -77,10 +77,9 @@ ENV SEAFILE_VERSION=7.1.5 SEAFILE_SERVER=seafile-server
 
 RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-bionic-arm64.tar.gz && \
-    tar -zxvf seafile-server_${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz && \
-    rm -f seafile-server_${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz 
+    tar -zxvf seafile-server-${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz && \
+    rm -f seafile-server-${SEAFILE_VERSION}_pi-bionic-arm64.tar.gz 
     
-
 # For using TLS connection to LDAP/AD server with docker-ce.
 RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libldap_r*" -o -name "libsasl2.so*" \) -delete
 
