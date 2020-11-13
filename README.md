@@ -1,5 +1,13 @@
 [![Build Status](https://secure.travis-ci.org/haiwen/seafile-docker.png?branch=master)](http://travis-ci.org/haiwen/seafile-docker)
 
+## Build instructions
+1. Pull
+2. cd image
+3. sudo make server-rpi
+4. Set up docker-compose.yml file
+5. Edit version in Dockerfile to pull latest
+6. Run docker-compose up
+
 ## About
 
 - [Docker](https://docker.com/) is an open source project to pack, ship and run any Linux application in a lighter weight, faster container than a traditional virtual machine.
