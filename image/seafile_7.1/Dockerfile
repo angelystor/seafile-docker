@@ -80,12 +80,15 @@ RUN mkdir -p /opt/seafile/ && cd /opt/seafile/ && \
     wget --no-check-certificate https://github.com/haiwen/seafile-rpi/releases/download/v7.1.5/seafile-server-7.1.5-focal-arm64.tar.gz && \
     tar -zxvf seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz && \
     rm -f seafile-server-${SEAFILE_VERSION}-focal-arm64.tar.gz 
-    
+
+RUN cd /opt/seafile/seafile-server-${SEAFILE_VERSION} && \
+    sed -i '/validate_running_user;/d' seafile.sh
+
 # For using TLS connection to LDAP/AD server with docker-ce.
 # RUN find /opt/seafile/ \( -name "liblber-*" -o -name "libldap-*" -o -name "libldap_r*" -o -name "libsasl2.so*" \) -delete
 
 
-EXPOSE 80 8000 8082 8999
+EXPOSE 8000
 
 
 CMD ["/sbin/my_init", "--", "/scripts/start.py"]
